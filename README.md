@@ -3,6 +3,9 @@
 This is a form control select birthday.
 
 ## Screenshot
+![Screenshot 2023-09-11 at 18 03 30](https://github.com/han48/mr4-lc.select-birthday/assets/27817127/4514054b-0613-4d1c-8e22-70ca33a6f298)
+![Screenshot 2023-09-11 at 18 03 47](https://github.com/han48/mr4-lc.select-birthday/assets/27817127/996bf095-59a6-47ea-a913-7c89aefa46d3)
+
 
 ## Installation
 
