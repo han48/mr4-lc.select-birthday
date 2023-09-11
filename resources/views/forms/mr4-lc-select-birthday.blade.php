@@ -132,9 +132,9 @@
     }
 
     .mr4-lc-select-birthday-input {
-        /* width: 0px;
+        width: 0px;
         opacity: 0;
-        margin-left: -14px; */
+        margin-left: -14px;
         cursor: default;
     }
 </style>
