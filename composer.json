@@ -1,0 +1,27 @@
+{
+    "name": "mr4-lc/select-birthday",
+    "description": "Laravel form control select birthday",
+    "type": "library",
+    "keywords": ["laravel", "extension", "editor", "from", "control", "select", "birthday"],
+    "version": "0.0.1",
+    "homepage": "https://github.com/han48/mr4-lc.select-birthday",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mr4Lc\\SelectBirthday\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mr4",
+            "email": "zzz4everzzz@live.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "laravelcollective/html": "^6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    }
+}
