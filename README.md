@@ -19,7 +19,7 @@ php artisan vendor:publish --tag=mr4-lc-select-birthday
 {!! Form::selectBirthday('birthday1', '2023-09-10') !!}
 {!! Form::selectBirthday('birthday2', '1992-09-10', [
     'max' => \Carbon\Carbon::now()->subYear(20),
-    'min' => \Carbon\Carbon::now()->subYear(200)
+    'min' => \Carbon\Carbon::now()->subYear(200),
 ]) !!}
 {!! Form::selectBirthday('birthday3', '1992-07-10', ['max' => '2003-09-11', 'min' => '1900-09-11']) !!}
 {!! Form::selectBirthday('birthday4') !!}
@@ -33,6 +33,13 @@ php artisan vendor:publish --tag=mr4-lc-select-birthday
     'class-form-label-month' => '',
     'class-form-control-day' => 'form-control day',
     'class-form-label-day' => '',
+]) !!}
+{!! Form::selectBirthday('birthday6', '1992-09-10', [
+    'label' => [
+        'year' => '年', // Default __('admin.year')
+        'month' => '月', // Default __('admin.month')
+        'day' => '日', // Default __('admin.day')
+    ],
 ]) !!}
 ```
 ## License
