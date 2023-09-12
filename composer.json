@@ -3,7 +3,7 @@
     "description": "Laravel form control select birthday",
     "type": "library",
     "keywords": ["laravel", "extension", "editor", "from", "control", "select", "birthday"],
-    "version": "0.0.1",
+    "version": "0.0.2",
     "homepage": "https://github.com/han48/mr4-lc.select-birthday",
     "license": "MIT",
     "authors": [
