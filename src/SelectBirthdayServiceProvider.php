@@ -59,6 +59,15 @@ class SelectBirthdayServiceProvider extends ServiceProvider
             if (!array_key_exists('class-form-label-day', $options)) {
                 $options['class-form-label-day'] = '';
             }
+            if (!array_key_exists('default-year', $options)) {
+                $options['default-year'] = null;
+            }
+            if (!array_key_exists('default-month', $options)) {
+                $options['default-month'] = null;
+            }
+            if (!array_key_exists('default-day', $options)) {
+                $options['default-day'] = null;
+            }
             if (!array_key_exists('min', $options)) {
                 $options['min'] = Carbon::now()->subYear(200);
             } else if (is_string($options['min'])) {
@@ -96,7 +105,7 @@ class SelectBirthdayServiceProvider extends ServiceProvider
             $options['year'] = [
                 null => $options['label']['year'],
             ];
-            for ($i = $options['max']->year; $i >= $options['min']->year; $i--) {
+            for ($i = $options['min']->year; $i <= $options['max']->year; $i++) {
                 $options['year'][$i] = $i;
             }
             $options['month'] = [
@@ -104,13 +113,17 @@ class SelectBirthdayServiceProvider extends ServiceProvider
             ];
             if (isset($value)) {
                 if ($value->year === $options['max']->year) {
-                    for ($i = $options['max']->month; $i >= 1; $i--) {
+                    for ($i = 1; $i <= $options['max']->month; $i++) {
                         $options['month'][$i] = $i;
                     }
                 } else {
-                    for ($i = 12; $i >= 1; $i--) {
+                    for ($i = 1; $i <= 12; $i++) {
                         $options['month'][$i] = $i;
                     }
+                }
+            } else {
+                for ($i = 1; $i <= 12; $i++) {
+                    $options['month'][$i] = $i;
                 }
             }
             $options['day'] = [
@@ -118,13 +131,17 @@ class SelectBirthdayServiceProvider extends ServiceProvider
             ];
             if (isset($value)) {
                 if ($value->year === $options['max']->year && $value->month === $options['max']->month) {
-                    for ($i = $options['max']->day; $i >= 1; $i--) {
+                    for ($i = 1; $i <= $options['max']->day; $i++) {
                         $options['day'][$i] = $i;
                     }
                 } else {
-                    for ($i = $options['max']->clone()->endOfMonth()->day; $i >= 1; $i--) {
+                    for ($i = 1; $i <= $options['max']->clone()->endOfMonth()->day; $i++) {
                         $options['day'][$i] = $i;
                     }
+                }
+            } else {
+                for ($i = 1; $i <= 31; $i++) {
+                    $options['day'][$i] = $i;
                 }
             }
 

@@ -72,7 +72,7 @@
                         option.text = placeholder;
                         option.value = '';
                         nextControl.appendChild(option);
-                        for (let index = maxMonth; index >= 1; index--) {
+                        for (let index = 1; index <= maxMonth; index++) {
                             var option = document.createElement("option")
                             option.text = index;
                             option.value = index;
@@ -92,7 +92,7 @@
                         option.text = placeholder;
                         option.value = '';
                         nextControl.appendChild(option);
-                        for (let index = maxDay; index >= 1; index--) {
+                        for (let index = 1; index <= maxDay; index++) {
                             var option = document.createElement("option")
                             option.text = index;
                             option.value = index;
@@ -139,9 +139,9 @@
     }
 </style>
 @php
-    $initYear = isset($value) ? $value->year : null;
-    $initMonth = isset($value) ? $value->month : null;
-    $initDay = isset($value) ? $value->day : null;
+    $initYear = isset($value) ? $value->year : $options['default-year'];
+    $initMonth = isset($value) ? $value->month : $options['default-month'];
+    $initDay = isset($value) ? $value->day : $options['default-day'];
 @endphp
 <div class="{{ $options['class-form-group'] }}">
     <select class="{{ $options['class-form-control-year'] }}" name="{{ $name . '__year' }}" id="{{ $name . '__year' }}"
@@ -155,7 +155,7 @@
     <label class="{{ $options['class-form-label-year'] }}"
         for="{{ $name . '__year' }}">{{ $options['label']['year'] }}</label>
     <select class="{{ $options['class-form-control-month'] }}" name="{{ $name . '__month' }}"
-        id="{{ $name . '__month' }}" {{ $required ? 'required' : '' }} {{ isset($initMonth) ? '' : 'disabled' }}
+        id="{{ $name . '__month' }}" {{ $required ? 'required' : '' }} {{ isset($initYear) ? '' : 'disabled' }}
         onchange="mr4LcSelectBirthday(this, new Date('{{ $options['max']->year }}', '{{ $options['max']->month }}', '{{ $options['max']->day }}'), new Date('{{ $options['min']->year }}', '{{ $options['min']->month }}', '{{ $options['min']->day }}'), '{{ $onchange }}')">
         @foreach ($options['month'] as $key => $data)
             <option value="{{ $key }}" {{ $key === $initMonth ? 'selected' : '' }}>{{ $data }}
@@ -165,7 +165,7 @@
     <label class="{{ $options['class-form-label-month'] }}"
         for="{{ $name . '__month' }}">{{ $options['label']['month'] }}</label>
     <select class="{{ $options['class-form-control-day'] }}" name="{{ $name . '__day' }}" id="{{ $name . '__day' }}"
-        {{ $required ? 'required' : '' }} {{ isset($initDay) ? '' : 'disabled' }}
+        {{ $required ? 'required' : '' }} {{ isset($initMonth) ? '' : 'disabled' }}
         onchange="mr4LcSelectBirthday(this, new Date('{{ $options['max']->year }}', '{{ $options['max']->month }}', '{{ $options['max']->day }}'), new Date('{{ $options['min']->year }}', '{{ $options['min']->month }}', '{{ $options['min']->day }}'), '{{ $onchange }}')">
         @foreach ($options['day'] as $key => $data)
             <option value="{{ $key }}" {{ $key === $initDay ? 'selected' : '' }}>{{ $data }}

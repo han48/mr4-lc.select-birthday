@@ -11,7 +11,7 @@ This is a form control select birthday.
 
 ```bash
 composer require mr4-lc/select-birthday
-php artisan vendor:publish --tag=mr4-lc-select-birthday
+php artisan vendor:publish --tag=mr4-lc-select-birthday --force
 ```
 
 ## Configuration
@@ -25,6 +25,11 @@ php artisan vendor:publish --tag=mr4-lc-select-birthday
     }
 </script>
 {{-- Form::selectBirthday($name, $value = null, $options = [], $required = false, $onchange = '') --}}
+{!! Form::selectBirthday('birthday0', null, [
+    'default-year' => 1980,
+    'default-month' => 10,
+    'default-day' => 7,
+]) !!}
 {!! Form::selectBirthday('birthday1', '2023-09-10') !!}
 {!! Form::selectBirthday(
     'birthday2',
@@ -34,7 +39,7 @@ php artisan vendor:publish --tag=mr4-lc-select-birthday
         'min' => \Carbon\Carbon::now()->subYear(200),
     ],
     true,
-    'selectAlert'
+    'selectAlert',
 ) !!}
 {!! Form::selectBirthday('birthday3', '1992-07-10', ['max' => '2003-09-11', 'min' => '1900-09-11']) !!}
 {!! Form::selectBirthday('birthday4', null, [], true) !!}
